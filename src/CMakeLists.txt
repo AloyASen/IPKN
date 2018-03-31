@@ -46,6 +46,26 @@ if (CMAKE_BUILD_TYPE MATCHES "^[Rr]elease")
 endif()
 
 ############################################################
+# Access boost libraries
+############################################################
+set(Boost_INCLUDE_DIR "/opt/lib/include" CACHE PATH " Boost header file directory ")
+set(Boost_LIBRARY_DIR "/opt/lib/lib" CACHE PATH " boost libraries directory ")
+# find a boost install with the libraries filesystem and system
+find_package(Boost 1.46.1 REQUIRED COMPONENTS filesystem system)
+
+# check if boost was found
+if(Boost_FOUND)
+    message ("boost found")
+else()
+    message (FATAL_ERROR "Cannot find Boost")
+endif()
+
+# Add an executable
+# add_executable(imported_targets main.cpp)
+
+# link against the boost libraries
+#target_link_libraries( imported_targets PRIVATE  Boost::filesystem)
+############################################################
 # Create an executable
 ############################################################
 

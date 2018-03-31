@@ -5,9 +5,9 @@ set(PROGRAM_NAME ${PROJECT-NAME})
 set(CXX "clang++")
 
 # The version number shown by the parser software that matters.
-set (PARSE_VERSION_MAJOR "0")
-set (PARSE_VERSION_MINOR "001")
-set (PARSE_VERSION_PATCH "0")
+set (PARSE_VERSION_MAJOR "0" CACHE STRING "the Current successful release version")
+set (PARSE_VERSION_MINOR "001" CACHE STRING "development beta changes inducted")
+set (PARSE_VERSION_PATCH "0" CACHE STRING "Patch distribution release number ")
 
 set(CMAKE_BUILD_TYPE Release)
 set(CMAKE_CXX_FLAGS_DEBUG "-Wall -W -Werror -pedantic -g")
