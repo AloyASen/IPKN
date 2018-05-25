@@ -2,16 +2,30 @@
 ############################################################
 # Create a library
 ############################################################
-add_library(hello_library SHARED 
-    Hello.cpp
-)
-add_library(hello::library ALIAS hello_library)
 
-target_include_directories(hello_library
+
+
+            # =================================================
+            ## Create a sublibrary - Memory Manager 
+            # ==================================================
+            #add_library(hello_library SHARED 
+            #    Hello.cpp
+            #)
+            #add_library(hello::library ALIAS hello_library)
+
+
+            # ------------------------------------------
+
+
+            add_library(mem_library SHARED 
+                MMan.cc
+            )
+            add_library(memory::library ALIAS mem_library)
+
+target_include_directories(mem_library
     PUBLIC 
         ${PROJECT_SOURCE_DIR}/include
 )
-
 
 #    ############################################################
 #    # Access boost libraries
@@ -45,5 +59,5 @@ add_executable(hello_binary
 # link the new hello_library target with the hello_binary target
 target_link_libraries( hello_binary
     PRIVATE 
-        hello::library
+        memory::library
 )
